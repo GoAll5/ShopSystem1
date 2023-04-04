@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: demo-service
+  main:
+    allow-bean-definition-overriding: true
+  data:
+    mongodb:
+      authentication-database: app
+      database: app
+      host: mongo-shop
+      port: 27017
+      auto-index-creation: true
+
+#      username: app
+#      password: app
+
+#  datasource:
+#    url: jdbc:postgresql://postgresql:5432/app
+#    username: app
+#    password: app
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    database: postgresql
+#    hibernate:
+#      ddl-auto: update
+
+##mongoDB
+#  spring.data.mongodb.authentication-database=admin
+#  spring.data.mongodb.database=Books
+#  #replace with your mongodb host
+#  spring.data.mongodb.host=127.0.0.1
+#  spring.data.mongodb.port=27017
+#  #replace with your username & password
+#  spring.data.mongodb.username=springboot
+#  spring.data.mongodb.password=spring
+
+server:
+  error:
+    include-exception: false
+    include-message: always
+    include-stacktrace: always
+
+security:
+  secret: secret12345678
+  token-lifetime: 55m
+  refresh-token-lifetime: 30d
+
+logstash:
+  url: logstash:9600
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include : "info,health,prometheus,metrics"
+
+event:
+  sourcing:
+    snapshot-frequency: 100
+    auto-scan-enabled: true
+    scan-package: ru.quipy

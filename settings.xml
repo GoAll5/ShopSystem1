@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd"
+          xmlns="http://maven.apache.org/SETTINGS/1.1.0">
+
+    <servers>
+        <server>
+            <id>github</id>
+            <username>${github.username}</username>
+            <password>${github.password}</password>
+        </server>
+        <server>
+            <id>github2</id>
+            <username>${github.username}</username>
+            <password>${github.password}</password>
+        </server>
+    </servers>
+
+    <activeProfiles>
+        <activeProfile>githubProfile</activeProfile>
+    </activeProfiles>
+
+    <profiles>
+        <profile>
+            <id>githubProfile</id>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2</url>
+                </repository>
+                <repository>
+                    <id>github</id>
+                    <url>https://maven.pkg.github.com/microservices-itmo-21-22/common-lib</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>github2</id>
+                    <url>https://maven.pkg.github.com/andrsuh/tiny-event-sourcing</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+
+    <mirrors>
+        <mirror>
+            <id>maven-default-http-blocker</id>
+            <mirrorOf>dummy</mirrorOf>
+            <name>Dummy mirror to override default blocking mirror that blocks http</name>
+            <url>http://0.0.0.0/</url>
+        </mirror>
+    </mirrors>
+</settings>
